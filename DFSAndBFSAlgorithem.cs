@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp3
 {
@@ -37,9 +38,10 @@ namespace ConsoleApp3
         private void VisitEdge(int vertice, bool[] visited)
         {
             visited[vertice] = true;
+            Console.Write(vertice + " ");
             foreach (int neighbor in adjacencyList[vertice])
             {
-                if (!visited[vertice])
+                if (!visited[neighbor])
                 {
                     VisitEdge(neighbor, visited);
                 }
@@ -62,6 +64,7 @@ namespace ConsoleApp3
             while (queue.Count > 0)
             {
                 int currentVertex= queue.Dequeue();
+                Console.Write(currentVertex + " ");
                 foreach (int vertex in adjacencyList[currentVertex])
                 {
                     if (!visistedLists[vertex])
